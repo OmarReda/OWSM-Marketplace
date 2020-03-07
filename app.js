@@ -1,45 +1,32 @@
 //////////////////////////////////////////
-/// Variables
+/// Variables & Config
 //////////////////////////////////////////
 
-var express = require("express"),
+var methodOverride = require("method-override"),
   bodyParser = require("body-parser"),
-  request = require("request"),
   mongoose = require("mongoose"),
+  express = require("express"),
+  request = require("request"),
   app = express();
 
-// app.use(express.static("public"));
 mongoose.connect("mongodb://localhost/yelp_camp");
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static("public"));
+app.use(methodOverride("_method"));
 
 //////////////////////////////////////////
-/// Schema Setup & Model
+/// DB Schema Setup & Model
 //////////////////////////////////////////
 
 var campgroundSchema = new mongoose.Schema({
   name: String,
   image: String,
-  description: String
+  description: String,
+  created: { type: Date, default: Date.now }
 });
 
 var Campground = mongoose.model("Campground", campgroundSchema);
-
-// Campground.create(
-//   {
-//     name: "Grantie Hill",
-//     image:
-//       "https://pixabay.com/get/52e8d4444255ae14f6da8c7dda793f7f1636dfe2564c704c7d2c7ed29344c659_340.jpg",
-//     description: "This is one of the best campgrounds ever."
-//   },
-//   function(err, campground) {
-//     if (err) {
-//       console.log(err);
-//     } else {
-//       console.log(campground);
-//     }
-//   }
-// );
 
 //////////////////////////////////////////
 /// Routes
@@ -91,6 +78,14 @@ app.get("/campgrounds/:id", function(req, res) {
     }
   });
 });
+
+// EDIT - edit already exsisting item
+//app.get();
+
+//UPDATE - update already exsisting item
+//app.put();
+
+// DELETE - delete already exsisting item
 
 //////////////////////////////////////////
 /// Server

@@ -1,19 +1,21 @@
 <%- include('partials/header')-%>
-<div class="container">
-    <div class="row">
-        <h1 style="text-align: center; width: 100%; margin-top: 50px;">Create New Campground</h1>
-        <div style="width: 30%; margin: 25px auto;">
-            <form action="/campgrounds" method="POST">
-                <input class="form-control" type="text" name="name" placeholder="Campground Name"
-                    style="margin-bottom: 10px;">
-                <input class="form-control" type="text" name="image" placeholder="Image URL"
-                    style="margin-bottom: 10px;">
-                <input class="form-control" type="text" name="description" placeholder="Description"
-                    style="margin-bottom: 10px;">
-                <button class="btn bt-lg btn-primary btn-block" style="margin-bottom: 10px;">Submit</button>
-            </form>
-            <a href="/campgrounds">Back</a>
+<section id="new-item-form">
+    <div class="container">
+        <div class="row">
+            <div class="form-container">
+                <h1>What Do You Want To Sell ?</h1>
+                <form action="/campgrounds" method="POST">
+                    <input class="form-control" type="text" name="name" placeholder="Product Name" required>
+                    <input class="form-control" type="text" name="image" placeholder="Image URL" required>
+                    <textarea class="form-control" type="text" name="description" placeholder="Product Description"
+                        required></textarea>
+                    <div class="button-group">
+                        <button class="btn bt-lg btn-primary">Submit</button>
+                        <a class="btn bt-lg btn-danger" href="/campgrounds">Go Back</a>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-</div>
+</section>
 <%- include('partials/footer'); -%>

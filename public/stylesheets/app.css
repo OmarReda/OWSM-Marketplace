@@ -1,0 +1,66 @@
+/********************* FOOTER *********************/
+#footer p {
+  text-align: center;
+  color: gray;
+  margin: auto auto;
+  padding: 10px;
+}
+
+/********************* NEW ITEM FORM *********************/
+#new-item-form .container h1 {
+  text-align: center;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+#new-item-form .container .form-container {
+  margin: 25px auto;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  margin-top: 20px;
+  padding: 40px 20px;
+}
+
+#new-item-form .container input {
+  width: 90%;
+  margin: 0 auto 10px auto;
+}
+
+#new-item-form .container textarea {
+  width: 90%;
+  margin: 0 auto 10px auto;
+  height: 100px;
+}
+
+#new-item-form .container button {
+  display: inline;
+}
+
+#new-item-form .container a {
+  display: inline;
+}
+
+#new-item-form .container .button-group {
+  width: 90%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/********************* ITEM DETAILS PAGE *********************/
+#product .details {
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  margin-top: 20px;
+  padding: 20px;
+  width: 50%;
+}
+
+#product .details img {
+  margin-bottom: 20px;
+  border-radius: 10px;
+  width: fit-content;
+}
+
+#product .details .product-image {
+  text-align: center;
+}

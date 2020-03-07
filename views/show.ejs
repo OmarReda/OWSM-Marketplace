@@ -1,9 +1,23 @@
 <%- include('partials/header'); %>
-
-<h1><%= campground.name %></h1>
-
-<img src="<%= campground.image %>">
-
-<p><%= campground.description %></p>
-
+<section id="product">
+    <div class="container details">
+        <div class="product-name">
+            <h1><%= campground.name %></h1>
+        </div>
+        <hr>
+        <div class="product-image">
+            <img src="<%= campground.image %>">
+        </div>
+        <div class="date">
+            <h5>Date of Creation:</h5>
+            <p><%= campground.created.toDateString() %></p>
+        </div>
+        <hr>
+        <div class="description">
+            <h5>Description</h5>
+            <p><%= campground.description %></p>
+        </div>
+        <a class="btn btn-danger" href="/campgrounds">Back</a>
+    </div>
+</section>
 <%- include('partials/footer'); %>
