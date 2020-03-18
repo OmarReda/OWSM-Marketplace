@@ -9,19 +9,43 @@ var methodOverride = require("method-override"),
   request = require("request"),
   Campground = require("./models/campground"),
   Comment = require("./models/comment"),
+  User = require("./models/user"),
   seedDB = require("./seeds"),
+  passport = require("passport"),
+  LocalStrategy = require("passport-local"),
+  passportLocalMongoose = require("passport-local-mongoose"),
   app = express();
 
-seedDB();
-mongoose.connect("mongodb://localhost/yelp_camp");
+mongoose.connect("mongodb://localhost/OWSM");
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
+seedDB();
 
 //////////////////////////////////////////
 /// Routes
 //////////////////////////////////////////
+
+// Passport Configs
+app.use(
+  require("express-session")({
+    secret: "Try to hack me!",
+    resave: false,
+    saveUninitialized: false
+  })
+);
+
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+app.use(function(req, res, next) {
+  res.locals.currentUser = req.user;
+  next();
+});
 
 // SHOW - show the landing page
 app.get("/", function(req, res) {
@@ -55,7 +79,7 @@ app.post("/campgrounds", function(req, res) {
 });
 
 // NEW - show the form to create a new campground
-app.get("/campgrounds/new", function(req, res) {
+app.get("/campgrounds/new", isLoggedIn, function(req, res) {
   res.render("campgrounds/new");
 });
 
@@ -72,19 +96,11 @@ app.get("/campgrounds/:id", function(req, res) {
     });
 });
 
-// EDIT - edit already exsisting item
-//app.get();
-
-//UPDATE - update already exsisting item
-//app.put();
-
-// DELETE - delete already exsisting item
-
 //////////////////////////////////////////
 /// Commnets Routes
 //////////////////////////////////////////
 
-app.get("/campgrounds/:id/comments/new", function(req, res) {
+app.get("/campgrounds/:id/comments/new", isLoggedIn, function(req, res) {
   Campground.findById(req.params.id, function(err, campground) {
     if (err) {
       console.log(err);
@@ -94,7 +110,7 @@ app.get("/campgrounds/:id/comments/new", function(req, res) {
   });
 });
 
-app.post("/campgrounds/:id/comments", function(req, res) {
+app.post("/campgrounds/:id/comments", isLoggedIn, function(req, res) {
   Campground.findById(req.params.id, function(err, campground) {
     if (err) {
       console.log(err);
@@ -112,6 +128,53 @@ app.post("/campgrounds/:id/comments", function(req, res) {
     }
   });
 });
+
+// Register
+app.get("/register", function(req, res) {
+  res.render("register");
+});
+
+app.post("/register", function(req, res) {
+  var newUser = new User({ username: req.body.username });
+  User.register(newUser, req.body.password, function(err, user) {
+    if (err) {
+      console.log(err);
+      return res.render("register");
+    }
+    passport.authenticate("local")(req, res, function() {
+      res.redirect("/campgrounds");
+    });
+  });
+});
+
+// Login
+app.get("/login", function(req, res) {
+  res.render("login");
+});
+
+app.post(
+  "/login",
+  passport.authenticate("local", {
+    successRedirect: "/campgrounds",
+    failureRedirect: "/login"
+  }),
+  function(req, res) {}
+);
+
+// Logout
+app.get("/logout", function(req, res) {
+  req.logout();
+  res.redirect("/campgrounds");
+});
+
+// Login Middleware
+function isLoggedIn(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  res.redirect("/login");
+}
+
 //////////////////////////////////////////
 /// Server
 //////////////////////////////////////////

@@ -6,19 +6,19 @@ var data = [
   {
     name: "Laptop Mac",
     image:
-      "https://pixabay.com/get/52e5dc424354b108f5d084609620367d1c3ed9e04e507441762673dd9e4ccc_340.jpg",
+      "https://pixabay.com/get/55e3d3404d55b108f5d084609620367d1c3ed9e04e507441712b7fd39344cc_340.jpg",
     description: "blah blah blah"
   },
   {
     name: "Laptop hp",
     image:
-      "https://pixabay.com/get/57e4d1404f57a514f6da8c7dda793f7f1636dfe2564c704c7d2b7bd69049c751_340.jpg",
+      "https://pixabay.com/get/52e5dc424354b108f5d084609620367d1c3ed9e04e507441712b7fd39344cc_340.jpg",
     description: "blah blah blah blah blah blah blah"
   },
   {
     name: "Laptop Dell",
     image:
-      "https://pixabay.com/get/54e6d44a4f52ad14f6da8c7dda793f7f1636dfe2564c704c7d2b7bd69049c35d_340.jpg",
+      "https://pixabay.com/get/57e4dd404355a814f6da8c7dda793f7f1636dfe2564c704c7d2b7fd09049cc51_340.jpg",
     description:
       "askldnalsfjnsad;gjnsgjasnasjgnas;djlgnasdj;gnasd;ga;dgjansdgasjgns;g"
   }
@@ -37,7 +37,7 @@ function seedDB() {
         if (err) {
           console.log(err);
         } else {
-          console.log("Added a Campground");
+          console.log("Added a New Ad");
           //Create a cooment
           Comment.create(
             {
