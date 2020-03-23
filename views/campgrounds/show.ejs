@@ -26,29 +26,48 @@
                     <% campground.comments.forEach(function(comment){ %>
                     <div class="row">
                         <div class="col-md-12 comment-values">
-                            <strong><%= comment.author %></strong>
+                            <strong><%= comment.author.username %></strong>
                             <span class="pull-right">10 Days ago</span>
                             <p><%= comment.text %></p>
+                            <%if(currentUser && comment.author.id.equals(currentUser._id)){%>
+                            <a class="btn btn-sm btn-warning"
+                                href="/campgrounds/<%=campground._id%>/comments/<%=comment._id%>/edit">Edit</a>
+                            <form class="delete"
+                                action="/campgrounds/<%=campground._id%>/comments/<%=comment._id%>?_method=DELETE"
+                                method="POST">
+                                <button class="btn btn-sm btn-danger">Delete</button>
+                            </form>
+                            <%}%>
                         </div>
                     </div>
 
                     <% }) %>
 
+                        </div>
+                        <a class=" btn btn-dark edit" href="/campgrounds">Back</a>
+                        <%if(currentUser && campground.author.id.equals(currentUser._id)){%>
+                        <a class="btn btn-warning edit" href="/campgrounds/<%=campground._id%>/edit">Edit</a>
+                        <form class="delete" action="/campgrounds/<%=campground._id%>?_method=DELETE" method="POST">
+                            <button class="btn btn-danger delete-btn">Delete</button>
+                        </form>
+                        <% }%>
+                    </div>
+                    <div class="col-lg-3 col-md-12">
+                        <div class="price">
+                            <h3>Price</h3>
+                            <hr>
+                            <h4>15,000 EGP</h4>
+                        </div>
+                        <div class="date">
+                            <h5>Date of Creation</h5>
+                            <p><%= campground.created.toDateString() %></p>
+                        </div>
+                        <div class="author">
+                            <h5>Owner</h5>
+                            <p><strong><%= campground.author.username %></strong></p>
+                        </div>
+                    </div>
                 </div>
-                <a class="btn btn-danger back" href="/campgrounds">Back</a>
             </div>
-            <div class="col-lg-3 col-md-12">
-                <div class="price">
-                    <h3>Price</h3>
-                    <hr>
-                    <h4>15,000 EGP</h4>
-                </div>
-                <div class="date">
-                    <h5>Date of Creation</h5>
-                    <p><%= campground.created.toDateString() %></p>
-                </div>
-            </div>
-        </div>
-    </div>
 </section>
 <%- include('../partials/footer'); %>

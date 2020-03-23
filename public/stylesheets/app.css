@@ -110,9 +110,22 @@
   padding: 20px;
 }
 
-#product .row .back {
+#product .details .description p {
+  word-wrap: break-word;
+}
+
+#product .row .edit {
   margin-top: 20px;
   width: 15%;
+}
+
+#product .row .delete {
+  display: inline-block;
+}
+
+#product .row .delete-btn {
+  margin-top: 20px;
+  width: 160%;
 }
 
 #product .comments {
@@ -153,6 +166,14 @@
 }
 
 #product .date {
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  margin-top: 20px;
+  padding: 20px;
+  text-align: center;
+}
+
+#product .author {
   border: 1px solid lightgray;
   border-radius: 5px;
   margin-top: 20px;
