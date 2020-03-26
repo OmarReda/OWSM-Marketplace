@@ -1,3 +1,65 @@
+/********************* Landing Page *********************/
+#landing-header .navbar {
+  padding-top: 20px;
+}
+
+#landing-header .navbar .navbar-brand,
+#header .navbar .navbar-brand {
+  padding: 10px 10px 10px 10px;
+  border-radius: 50%;
+  background-color: #f3ba00;
+}
+
+#landing-header nav .navbar-nav {
+  margin-right: 10px;
+}
+
+#landing-header nav .navbar-nav li a {
+  color: white;
+  margin: auto 12px;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 5px;
+}
+
+#header nav .navbar-nav li a {
+  color: black;
+  margin: auto 12px;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 5px;
+}
+
+#header nav .navbar-nav li a:hover {
+  color: white;
+}
+
+#landing-header nav .navbar-nav li a:hover {
+  color: black;
+  background-color: #f3ba00;
+}
+
+#titles .main-title {
+  font-size: 64px;
+  color: white;
+  text-align: center;
+  font-weight: 600;
+}
+
+#titles .sub-title {
+  font-size: 32px;
+  color: white;
+  text-align: center;
+}
+
+#titles .btn {
+  margin-left: 44%;
+  margin-top: 10px;
+  font-weight: 700;
+  background-color: #f3ba00;
+  color: black;
+}
+
 /********************* Index Page *********************/
 #items .card img {
   width: 100%;
@@ -60,6 +122,11 @@
   color: gray;
   margin: auto auto;
   padding: 10px;
+}
+
+/********************* FOOTER *********************/
+#header .container {
+  margin-top: 20px;
 }
 
 /********************* NEW ITEM FORM *********************/

@@ -56,14 +56,14 @@
                         <div class="price">
                             <h3>Price</h3>
                             <hr>
-                            <h4>15,000 EGP</h4>
+                            <h4><%= campground.price %> EGP</h4>
                         </div>
                         <div class="date">
                             <h5>Date of Creation</h5>
                             <p><%= campground.created.toDateString() %></p>
                         </div>
                         <div class="author">
-                            <h5>Owner</h5>
+                            <h5>Publisher</h5>
                             <p><strong><%= campground.author.username %></strong></p>
                         </div>
                     </div>

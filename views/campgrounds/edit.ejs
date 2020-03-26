@@ -9,6 +9,8 @@
                         required>
                     <input class="form-control" type="text" name="campground[image]" value="<%=campground.image%>"
                         required>
+                    <input class="form-control" type="number" name="campground[price]" value="<%=campground.price%>"
+                        min="0.0" step="100" required>
                     <textarea class="form-control" type="text" name="campground[description]"
                         required><%=campground.description%></textarea>
                     <div class="button-group">

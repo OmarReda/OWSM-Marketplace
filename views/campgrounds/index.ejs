@@ -1,7 +1,7 @@
 <%- include('../partials/header'); -%>
 
 <div class="container">
-    <header class="jumbotron" style="margin-top: 20px;">
+    <header class="jumbotron" style="margin-top: 20px; background-color: #ffffff; box-shadow: 5px 5px 10px dimgray;">
         <div class="container">
             <h1 class="display-4">Welcome to OWSM Marketplace!</h1>
             <p class="lead">OWSM Marketplace is a platform for buying and selling services and goods
@@ -21,8 +21,8 @@
                     <img class="card-img-top" src="<%= campground.image %>" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title"><%= campground.name.substring(0,16)%></h5>
-                        <p class="card-text"><%= campground.description.substring(0,27)%>...</p>
-                        <p class="price">Price: 15,000 EGP</p>
+                        <p class="card-text"><%= campground.description.substring(0,24)%>...</p>
+                        <p class="price"><%=campground.price%> EGP</p>
                         <a href="/campgrounds/<%= campground._id%>" class="btn btn-primary">Veiw Details</a>
                     </div>
                 </div>
@@ -31,4 +31,3 @@
         </div>
     </section>
 </div>
-<%- include('../partials/footer'); -%>
