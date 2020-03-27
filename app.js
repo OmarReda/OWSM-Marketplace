@@ -34,6 +34,7 @@ mongoose
   })
   .then(() => console.log("Database Connected Successfully"))
   .catch(err => console.log(err));
+
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + "/public"));
@@ -73,6 +74,6 @@ app.use("/products/:id/comments", commentRoutes);
 /// Server
 //////////////////////////////////////////
 
-app.listen(3000, function() {
-  console.log("Assignment Server 3000");
+app.listen(process.env.PORT || 3000, function() {
+  console.log("Express server listening on port");
 });

@@ -7,11 +7,11 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js"
   },
-  "author": "Omar Reda",
-  "license": "ISC",
   "engines": {
     "node": "10.16.0"
   },
+  "author": "Omar Reda",
+  "license": "ISC",
   "dependencies": {
     "arequest": "^3.0.2",
     "body-parser": "^1.19.0",
