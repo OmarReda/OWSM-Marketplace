@@ -24,9 +24,16 @@ var commentRoutes = require("./routes/comments"),
   indexRoutes = require("./routes/index");
 
 // mongoose.connect("mongodb://localhost/OWSM_V2");
-mongoose.connect(
-  "mongodb+srv://omarreda291:kokoboco258147@cluster0-ddili.mongodb.net/test?retryWrites=true&w=majority"
-);
+const connection =
+  "mongodb+srv://omarreda291:kokoboco258147@cluster0-ddili.mongodb.net/test?retryWrites=true&w=majority";
+mongoose
+  .connect(connection, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false
+  })
+  .then(() => console.log("Database Connected Successfully"))
+  .catch(err => console.log(err));
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + "/public"));
