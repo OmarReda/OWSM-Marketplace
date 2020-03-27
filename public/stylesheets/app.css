@@ -248,6 +248,15 @@
   text-align: center;
 }
 
+#product #phone {
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  margin-top: 10px;
+  padding: 20px;
+  text-align: center;
+  display: none;
+}
+
 #product .details img {
   margin-bottom: 20px;
   border-radius: 2px;

@@ -1,0 +1,23 @@
+<%- include('../partials/header')-%>
+<section id="new-item-form">
+    <div class="container">
+        <div class="row">
+            <div class="form-container">
+                <h1>Edit <%=product.name%></h1>
+                <form action="/products/<%=product._id%>?_method=PUT" method="POST">
+                    <input class="form-control" type="text" name="product[name]" value="<%=product.name%>" required>
+                    <input class="form-control" type="text" name="product[image]" value="<%=product.image%>" required>
+                    <input class="form-control" type="number" name="product[price]" value="<%=product.price%>" min="0.0"
+                        step="10" required>
+                    <textarea class="form-control" type="text" name="product[description]"
+                        required><%=product.description%></textarea>
+                    <div class="button-group">
+                        <button class="btn bt-lg btn-primary">Update</button>
+                        <a class="btn bt-lg btn-danger" href="/products/<%=product._id%>">Go Back</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<%- include('../partials/footer'); -%>

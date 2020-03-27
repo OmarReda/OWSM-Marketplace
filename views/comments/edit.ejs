@@ -4,11 +4,11 @@
         <div class="row">
             <div class="form-container">
                 <h1>Edit Your Question or Review</h1>
-                <form action="/campgrounds/<%= campground_id %>/comments/<%=comment._id%>?_method=PUT" method="POST">
+                <form action="/products/<%= product_id %>/comments/<%=comment._id%>?_method=PUT" method="POST">
                     <input class="form-control" type="text" name="comment[text]" value="<%=comment.text%>" required>
                     <div class="button-group">
                         <button class="btn bt-lg btn-primary">Update</button>
-                        <a class="btn bt-lg btn-danger" href="/campgrounds/<%= campground_id %>">Go Back</a>
+                        <a class="btn bt-lg btn-danger" href="/products/<%= product_id %>">Go Back</a>
                     </div>
                 </form>
             </div>

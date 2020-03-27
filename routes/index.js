@@ -20,7 +20,10 @@ router.get("/register", function(req, res) {
 
 // Sign Up Logic
 router.post("/register", function(req, res) {
-  var newUser = new User({ username: req.body.username });
+  var newUser = new User({
+    username: req.body.username,
+    phone: req.body.phone
+  });
   User.register(newUser, req.body.password, function(err, user) {
     if (err) {
       req.flash("error", err.message);
@@ -28,7 +31,7 @@ router.post("/register", function(req, res) {
     }
     passport.authenticate("local")(req, res, function() {
       req.flash("success", "Welcome to OWSM Marketplace " + user.username);
-      res.redirect("/campgrounds");
+      res.redirect("/products");
     });
   });
 });
@@ -42,7 +45,7 @@ router.get("/login", function(req, res) {
 router.post(
   "/login",
   passport.authenticate("local", {
-    successRedirect: "/campgrounds",
+    successRedirect: "/products",
     failureRedirect: "/login",
     failureFlash: "Invalid username or password."
   }),
@@ -53,7 +56,7 @@ router.post(
 router.get("/logout", function(req, res) {
   req.logout();
   req.flash("success", "Logged You Out");
-  res.redirect("/campgrounds");
+  res.redirect("/products");
 });
 
 module.exports = router;

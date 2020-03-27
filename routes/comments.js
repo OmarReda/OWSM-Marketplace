@@ -3,28 +3,28 @@
 //////////////////////////////////////////
 
 var express = require("express");
-var Campground = require("../models/campground");
+var Product = require("../models/product");
 var Comment = require("../models/comment");
 var middleware = require("../middleware");
 var router = express.Router({ mergeParams: true });
 
 // Comments NEW
 router.get("/new", middleware.isLoggedIn, function(req, res) {
-  Campground.findById(req.params.id, function(err, campground) {
+  Product.findById(req.params.id, function(err, product) {
     if (err) {
       console.log(err);
     } else {
-      res.render("comments/new", { campground: campground });
+      res.render("comments/new", { product: product });
     }
   });
 });
 
 // Comments Create
 router.post("/", middleware.isLoggedIn, function(req, res) {
-  Campground.findById(req.params.id, function(err, campground) {
+  Product.findById(req.params.id, function(err, product) {
     if (err) {
       console.log(err);
-      res.redirect("/campgrounds");
+      res.redirect("/products");
     } else {
       Comment.create(req.body.comment, function(err, comment) {
         if (err) {
@@ -35,10 +35,10 @@ router.post("/", middleware.isLoggedIn, function(req, res) {
           comment.author.username = req.user.username;
           //save comment
           comment.save();
-          campground.comments.push(comment);
-          campground.save();
+          product.comments.push(comment);
+          product.save();
           req.flash("success", "Successfully added your review");
-          res.render("/campgrounds/" + campground._id);
+          res.redirect("/products/" + product._id);
         }
       });
     }
@@ -55,7 +55,7 @@ router.get("/:comment_id/edit", middleware.checkCommentOwernship, function(
       console.log(err);
     } else {
       res.render("comments/edit", {
-        campground_id: req.params.id,
+        product_id: req.params.id,
         comment: foundComment
       });
     }
@@ -74,7 +74,7 @@ router.put("/:comment_id", middleware.checkCommentOwernship, function(
     if (err) {
       res.redirect("back");
     } else {
-      res.redirect("/campgrounds/" + req.params.id);
+      res.redirect("/products/" + req.params.id);
     }
   });
 });
@@ -89,7 +89,7 @@ router.delete("/:comment_id", middleware.checkCommentOwernship, function(
       res.redirect("back");
     } else {
       req.flash("Success", "Review deleted");
-      res.redirect("/campgrounds/" + req.params.id);
+      res.redirect("/products/" + req.params.id);
     }
   });
 });

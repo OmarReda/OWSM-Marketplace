@@ -2,18 +2,18 @@
 /// Middlewares
 //////////////////////////////////////////
 
-var Campground = require("../models/campground");
+var Product = require("../models/product");
 var Comment = require("../models/comment");
 var middlewareObj = {};
 
-middlewareObj.checkCampgroundOwernship = function(req, res, next) {
+middlewareObj.checkProductOwernship = function(req, res, next) {
   if (req.isAuthenticated()) {
-    Campground.findById(req.params.id, function(err, foundCampground) {
+    Product.findById(req.params.id, function(err, foundProduct) {
       if (err) {
-        req.flash("error", "Campground not found");
+        req.flash("error", "Product not found");
         res.redirect("back");
       } else {
-        if (foundCampground.author.id.equals(req.user._id)) {
+        if (foundProduct.author.id.equals(req.user._id)) {
           next();
         } else {
           req.flash("error", "You don't have permission to do that");

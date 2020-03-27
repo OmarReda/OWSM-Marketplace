@@ -7,7 +7,7 @@ var methodOverride = require("method-override"),
   mongoose = require("mongoose"),
   express = require("express"),
   request = require("request"),
-  Campground = require("./models/campground"),
+  Product = require("./models/product"),
   Comment = require("./models/comment"),
   User = require("./models/user"),
   seedDB = require("./seeds"),
@@ -20,10 +20,10 @@ var methodOverride = require("method-override"),
 
 // Require Routes
 var commentRoutes = require("./routes/comments"),
-  campgroundRoutes = require("./routes/campgrounds"),
+  productRoutes = require("./routes/products"),
   indexRoutes = require("./routes/index");
 
-mongoose.connect("mongodb://localhost/OWSM");
+mongoose.connect("mongodb://localhost/OWSM_V2");
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + "/public"));
@@ -56,8 +56,8 @@ app.use(function(req, res, next) {
 });
 
 app.use(indexRoutes);
-app.use("/campgrounds", campgroundRoutes);
-app.use("/campgrounds/:id/comments", commentRoutes);
+app.use("/products", productRoutes);
+app.use("/products/:id/comments", commentRoutes);
 
 //////////////////////////////////////////
 /// Server

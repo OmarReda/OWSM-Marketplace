@@ -1,5 +1,5 @@
 var mongoose = require("mongoose");
-var Campground = require("./models/campground");
+var Product = require("./models/product");
 var Comment = require("./models/comment");
 
 var data = [
@@ -25,15 +25,15 @@ var data = [
 ];
 
 function seedDB() {
-  //Remove all campgrounds
-  Campground.remove({}, function(err) {
+  //Remove all products
+  Product.remove({}, function(err) {
     if (err) {
       console.log(err);
     }
     console.log("removed ads");
-    //Add a few campgrounds
+    //Add a few products
     data.forEach(function(seed) {
-      Campground.create(seed, function(err, campground) {
+      Product.create(seed, function(err, product) {
         if (err) {
           console.log(err);
         } else {
@@ -49,8 +49,8 @@ function seedDB() {
                 console.log(err);
               } else {
                 console.log("Added a Comment");
-                campground.comments.push(comment);
-                campground.save();
+                product.comments.push(comment);
+                product.save();
               }
             }
           );
