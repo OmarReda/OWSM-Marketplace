@@ -25,7 +25,7 @@ var commentRoutes = require("./routes/comments"),
 
 // mongoose.connect("mongodb://localhost/OWSM_V2");
 mongoose.connect(
-  "mongodb+srv://omarreda291:smaherbelal291@cluster0-ddili.mongodb.net/test?retryWrites=true&w=majority"
+  "mongodb+srv://omarreda291:kokoboco258147@cluster0-ddili.mongodb.net/test?retryWrites=true&w=majority"
 );
 // const MongoClient = require("mongodb").MongoClient;
 // const uri =
