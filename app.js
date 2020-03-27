@@ -18,9 +18,6 @@ var methodOverride = require("method-override"),
   flash = require("connect-flash"),
   app = express();
 
-// var DATABASEURL =
-//   "mongodb+srv://omarreda291:kokoboco258147@cluster0-ddili.mongodb.net/test?retryWrites=true&w=majority";
-
 // Require Routes
 var commentRoutes = require("./routes/comments"),
   productRoutes = require("./routes/products"),
@@ -53,7 +50,6 @@ app.use(
 );
 
 // App Use
-
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
