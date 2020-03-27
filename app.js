@@ -18,16 +18,17 @@ var methodOverride = require("method-override"),
   flash = require("connect-flash"),
   app = express();
 
+// var DATABASEURL =
+//   "mongodb+srv://omarreda291:kokoboco258147@cluster0-ddili.mongodb.net/test?retryWrites=true&w=majority";
+
 // Require Routes
 var commentRoutes = require("./routes/comments"),
   productRoutes = require("./routes/products"),
   indexRoutes = require("./routes/index");
 
 // mongoose.connect("mongodb://localhost/OWSM_V2");
-const connection =
-  "mongodb+srv://omarreda291:kokoboco258147@cluster0-ddili.mongodb.net/test?retryWrites=true&w=majority";
 mongoose
-  .connect(connection, {
+  .connect(process.env.DATABASEURL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false
