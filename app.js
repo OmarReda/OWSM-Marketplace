@@ -27,14 +27,6 @@ var commentRoutes = require("./routes/comments"),
 mongoose.connect(
   "mongodb+srv://omarreda291:kokoboco258147@cluster0-ddili.mongodb.net/test?retryWrites=true&w=majority"
 );
-// const MongoClient = require("mongodb").MongoClient;
-// const uri =
-//   "mongodb+srv://omarreda291:smaherbelal291@cluster0-ddili.mongodb.net/test?retryWrites=true&w=majority";
-// const client = new MongoClient(uri, { useNewUrlParser: true });
-// client.connect(err => {
-//   const collection = client.db("test").collection("devices");
-//   client.close();
-// });
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + "/public"));
