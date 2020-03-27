@@ -7,6 +7,6 @@ OWSM Marketplace is a platform for buying and selling products
 * HTML - CSS - Bootstrap
 
 ## Steps To Run the app
-1- Open Node CMD and access the application directory
-2- Type on cmd Node app.js
-3- The app will start on localhost:3000
+1. Open Node CMD and access the application directory
+2. Type on cmd Node app.js
+3. The app will start on localhost:3000
