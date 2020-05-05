@@ -24,8 +24,10 @@ var commentRoutes = require("./routes/comments"),
   indexRoutes = require("./routes/index");
 
 // mongoose.connect("mongodb://localhost/OWSM_V2");
+const connection =
+  "mongodb+srv://omarreda291:kokoboco258147@cluster0-ddili.mongodb.net/test?retryWrites=true&w=majority";
 mongoose
-  .connect(process.env.DATABASEURL, {
+  .connect(connection, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false
@@ -50,6 +52,7 @@ app.use(
 );
 
 // App Use
+
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
@@ -72,5 +75,5 @@ app.use("/products/:id/comments", commentRoutes);
 //////////////////////////////////////////
 
 app.listen(process.env.PORT || 3000, function() {
-  console.log("Express server listening on port");
+  console.log("Express server listening on port %d", this.address().port);
 });
